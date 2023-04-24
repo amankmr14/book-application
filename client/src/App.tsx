@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { trpc } from "./lib/trpc";
 import { httpBatchLink } from "@trpc/client";
 import AppRouter from "./Routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -17,12 +19,13 @@ function App() {
   );
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient} >
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
+        <ToastContainer />
         <AppRouter />
       </QueryClientProvider>
     </trpc.Provider>
-    );
+  );
 }
 
 export default App;

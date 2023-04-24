@@ -21,3 +21,17 @@ model Books {
   description String
   content     String
 }
+
+model Users {
+  id  String @id @default(uuid()) @db.Uuid
+  fullName String
+  userName String @unique
+  password String
+}
+
+model BookRating {
+  id String @id @default(uuid()) @db.Uuid
+  bookId String 
+  userId String
+  rating Int
+}

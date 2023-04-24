@@ -20,7 +20,7 @@ const Button = ({ text, onClick, variant, className = "" }: Props) => {
 
   return (
     <button
-      className={`rounded-lg py-2 px-4 self-start mt-3 ${getVariantStyles(variant)} ${className}`}
+      className={`${className} rounded-lg py-2 px-4 self-start mt-3 ${getVariantStyles(variant)}`}
       onClick={onClick}
     >
       {text}

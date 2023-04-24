@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { trpc } from "../lib/trpc";
 import { toHoursAndMinutes } from "../lib/utils";
 import Button from "../components/Button";
@@ -21,6 +21,7 @@ type BookDetails = {
 
 const BookDetails = (props: Props) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [bookData, setBookData] = useState<BookDetails | null>();
 
   const bookDetails = trpc.books.bookDetails.useQuery({ id: id ? id : "" });
@@ -33,7 +34,11 @@ const BookDetails = (props: Props) => {
 
   return (
     <div className="p-6 relative">
-      <Button variant="outlined" onClick={() => {}} text="&larr; Back to Home" />
+      <Button
+        variant="outlined"
+        onClick={() => navigate(-1)}
+        text="&larr; Back to Home"
+      />
       <main className="flex flex-col md:flex-row pt-6">
         {/* Left */}
         <img
@@ -77,7 +82,7 @@ const BookDetails = (props: Props) => {
           <Button variant="primary" text="Read this Book" onClick={() => {}} />
         </div>
       </main>
-      <PdfViewer content={bookData?.content}/>
+      <PdfViewer content={bookData?.content} />
     </div>
   );
 };

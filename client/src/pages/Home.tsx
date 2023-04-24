@@ -10,7 +10,6 @@ type Props = {};
 const Home = (props: Props) => {
   const navigate = useNavigate();
   const booksQuery = trpc.books.allBooks.useQuery();
-  console.log(booksQuery.data);
 
   const handleRedirect = () => {
     navigate("/addBook");

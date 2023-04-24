@@ -78,7 +78,7 @@ const Form = (props: Props) => {
             />{" "}
           </div>
         ) : (
-          <img src={preview} className="max-w-[400px] max-h-[550px] min-w-[400px] rounded-lg mr-10"/>
+          <img src={preview} className="max-h-[550px] w-[400px] rounded-lg mr-10"/>
         )}
 
       <div className="flex flex-col flex-1">
